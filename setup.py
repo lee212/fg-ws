@@ -26,7 +26,7 @@ setup(
     name='fg-ws',
     version='0.1-dev',
     url='http://github.com/lee212/fg-ws/',
-    license=open('LICENSE').read(),
+    license='Apache Software License',
     author='Hyungro Lee',
     author_email='hroelee@gmail.com',
     description='A rest client tool for futuregrid cloud project',
