@@ -23,7 +23,7 @@ Links
 from setuptools import setup
 
 setup(
-    name='fg-ws client',
+    name='fgwsclient',
     version='0.1-dev',
     url='http://github.com/lee212/fg-ws/',
     license='Apache Software License',
@@ -31,7 +31,7 @@ setup(
     author_email='hroelee@gmail.com',
     description='A rest client tool for futuregrid cloud project',
     long_description=__doc__,
-    packages=['fgws.client'],
+    packages=['fgws','fgws.client'],
     include_package_data=True,
     zip_safe=False,
     platforms='any',
@@ -54,7 +54,7 @@ setup(
     entry_points={
         'console_scripts':
             [
-             'fg-describe-users = fgws.client.FGWSClient:list_active_users'
+             'fg-list-users = fgws.client.FGWSClient:list_active_users',
              ]
             }
  
