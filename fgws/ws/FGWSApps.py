@@ -29,7 +29,7 @@ def get_active_username():
     mdb = FGMySQLDB()
     #mdb.dbinfo("hostname","id","pass","db")
     mdb.connect()
-    res = mdb.select("select distinct name from keystone.user, (select user_id from instances where vm_state='active') as a where id=a.user_id")
+    res = mdb.select("select distinct name from keystone.user, (select user_id from instances where vm_state='active' and task_state is null) as a where id=a.user_id")
     mdb.close()
     return res
 
