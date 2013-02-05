@@ -10,6 +10,7 @@ $ python setup.client.py install
 Example of fg-ws client
 ------------------------
 $ fg-list-users
+ 
 [{'ownerid': 'jasonlee', 'first_name':"Jason", 'last_name': "Lee", 'email':'jasonLee@gmail.com'}]
 ...
 
