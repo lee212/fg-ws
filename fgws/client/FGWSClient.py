@@ -13,3 +13,6 @@ class FGWSClient:
         pprint(res, indent=2)
 
 
+def list_active_users():
+    client = FGWSClient()
+    client.list_active_users()
