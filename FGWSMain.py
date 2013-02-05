@@ -1,5 +1,5 @@
 from cherrypy import wsgiserver
-from hello import app
+from FGWSApps import app
 
 d = wsgiserver.WSGIPathInfoDispatcher({'/': app})
 server = wsgiserver.CherryPyWSGIServer(('0.0.0.0', 8081), d)
