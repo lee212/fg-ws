@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify
 import json
 import mimerender
@@ -27,6 +28,7 @@ def get_active_users():
 
 def get_active_username():
     mdb = FGMySQLDB()
+    mdb.dbinfo(os.environ["FG_OPENSTACK_DB_HOST"], os.environ["FG_OPENSTACK_DB_ID"], os.environ["FG_OPENSTACK_DB_PASS"], os.environ["FG_OPENSTACK_DB_NAME"])
     #mdb.dbinfo("hostname","id","pass","db")
     mdb.connect()
     res = mdb.select("select distinct name from keystone.user, (select user_id from instances where vm_state='active' and task_state is null) as a where id=a.user_id")
@@ -36,6 +38,7 @@ def get_active_username():
 def convert_username(userids):
     res = []
     mdb = FGMySQLDB()
+    mdb.dbinfo(os.environ["FG_METRIC_DB_HOST"], os.environ["FG_METRIC_DB_ID"], os.environ["FG_METRIC_DB_PASS"], os.environ["FG_METRIC_DB_NAME"])
     #mdb.dbinfo("hostname","id","pass","db")
     mdb.connect()
     for record in userids:
@@ -50,4 +53,5 @@ def convert_username(userids):
     return res
 
 if __name__ == "__main__":
+    app.run(host=os.environ["FG_HOSTING_IP"], debug=True)
     #app.run(host="0.0.0.0", debug=True)
