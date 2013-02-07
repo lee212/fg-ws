@@ -1,10 +1,11 @@
+import os
 import requests
 from pprint import pprint
 
 class FGWSClient:
 
     def __init__(self):
-        self.base_url = "http://129.79.49.179:5000/"
+        self.base_url = os.environ["FG_WS_URL"]
 
     def list_active_users(self):
         json_name = "get_active_users.json"
