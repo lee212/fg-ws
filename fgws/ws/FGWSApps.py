@@ -1,26 +1,13 @@
 import os
 from flask import Flask, jsonify
 import json
-import mimerender
 from FGMySQLDB import FGMySQLDB
-
-mimerender = mimerender.FlaskMimeRender()
-
-render_xml = lambda message: '<message>%s</message>' % str(message)
-render_json = lambda **args: jsonify(args)
-render_html = lambda message: '<html><body>%s</body></html>' % str(message)
-render_txt = lambda message: message
+from FGMimerender import mimerender
 
 app = Flask(__name__)
 
 @app.route("/get_active_users.json")
-@mimerender(
-        default = 'json',
-        html = render_html,
-        xml  = render_xml,
-        json = render_json,
-        txt  = render_txt
-        )
+@mimerender
 def get_active_users():
     userids = get_active_username()
     res = convert_username(userids)
