@@ -1,4 +1,5 @@
 from mimerender import FlaskMimeRender
+from flask import jsonify
 
 render_xml = lambda message: '<message>%s</message>' % str(message)
 render_json = lambda **args: jsonify(args)
